@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>GrpcService</RootNamespace>
+        <Configurations>Debug;Release;CPU</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+		<Protobuf Include="..\Protos\messenger.proto" GrpcServices="Server" Link="Protos\messenger.proto" />
+	
+        <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
+    </ItemGroup>
+
+</Project>
