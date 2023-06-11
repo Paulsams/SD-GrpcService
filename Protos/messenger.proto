@@ -5,13 +5,36 @@ option csharp_namespace = "GrpcService";
 package Messenger;
 
 service User {
-  rpc SendMessage (MessageRequest) returns (MessageReply);
+  rpc Authorization (AuthorizationRequest) returns (AuthorizationReply);
+  rpc SendPassword (CheckPasswordRequest) returns (CheckPasswordReply);
+  
+  rpc WaiterMessages (stream MessageRequest) returns (stream MessageReply);
+}
+
+message AuthorizationRequest {
+  string name = 1;
+}
+
+message AuthorizationReply {
+  bool isValid = 1;
+  string id = 2;
+}
+
+message CheckPasswordRequest {
+  string userId = 1;
+  string password = 2;
+}
+
+message CheckPasswordReply {
+  bool isValid = 1;
 }
 
 message MessageRequest {
-  string text = 1;
+  string userId = 1;
+  string text = 2;
 }
 
 message MessageReply {
-  string text = 1;
+  string userName = 1;
+  string text = 2;
 }
